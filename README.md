@@ -58,15 +58,21 @@ $ pnpm run test:e2e
 $ pnpm run test:cov
 ```
 
-## Support
+### Generating TypeScript code of auth.proto
+To generate TypeScript code from the auth.proto file, you can use the appropriate protoc command. Please refer to the previous conversation for the specific command.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+protoc --plugin=protoc-gen-ts_proto=.\node_modules\.bin\protoc-gen-ts_proto.cmd --ts_proto_opt=nestJs=true --ts_proto_out=. ./proto/auth.proto
+```
+Here is a breakdown of the command and its options:
 
-## Stay in touch
+- protoc: The command to invoke the Protocol Buffers Compiler.
+- --plugin=protoc-gen-ts_proto=.\node_modules\.bin\protoc-gen-ts_proto.cmd: Specifies the plugin to use for generating TypeScript code. In this case, it is using the protoc-gen-ts_proto plugin located in the .\node_modules\.bin directory.
+- --ts_proto_opt=nestJs=true: Sets an option for the ts_proto plugin. In this case, it is setting the nestJs option to true, which indicates that the generated code should be compatible with NestJS.
+- --ts_proto_out=.: Specifies the output directory for the generated TypeScript code. In this case, it is set to the current directory (.).
+- ./proto/auth.proto: The path to the input .proto file that defines the protocol buffer messages and services.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Overall, this command takes the `auth.proto` file and generates TypeScript code based on the defined protocol buffer messages and services, using the protoc-gen-ts_proto plugin. The generated code will be compatible with NestJS due to the `nestJs=true` option.
 
 ## License
 
